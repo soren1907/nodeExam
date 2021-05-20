@@ -1,0 +1,92 @@
+<div class="container" id="login-signup-box">
+    <div class="row">
+        <div class="col-sm-12 col-md-6" align="center">
+            <h2>Login</h2>
+            <br> 
+            <div id="login-error" style="color: darkred;"></div>
+            <div class="input-group mb-3 w-75">
+                <input type="text" id="username_login" name="username_login" class="form-control" placeholder="Username" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3 w-75">
+                <input type="password" id="password_login" name="password_login" class="form-control" placeholder="Password" aria-describedby="inputGroup-sizing-default">
+            </div>   
+            <div class="d-grid gap-2 w-75">
+                <button class="btn btn-primary mb-3" type="submit" onclick="sendLoginData()">Login</button>
+            </div>  
+        </div>
+
+        <div class="col-sm-12 col-md-6" align="center">
+            <h2>Sign up</h2>
+            <br> 
+            <div id="signup-error" style="color: darkred;"></div>
+            <div class="input-group mb-3 w-75">
+                <input type="text" id="username_signup" name="username_signup" class="form-control" placeholder="Username"  aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3 w-75">
+                <input type="password" id="password_signup" name="password_signup" class="form-control" placeholder="Password (min 8 char)" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3 w-75">
+                <input type="password" id="password_signup2" name="password_signup2" class="form-control" placeholder="Type password again" aria-describedby="inputGroup-sizing-default">
+            </div> 
+            <div class="d-grid gap-2 w-75">
+                <button class="btn btn-primary" type="submit" onclick="sendSignupData()">Sign up</button>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<link href="/login_signup/login_signup.css" rel="stylesheet" >
+<script src="/login_signup/login_signup.js"></script>
+
+<script>
+    function sendSignupData(){
+        
+        const data = {
+            username: document.getElementById("username_signup").value,
+            password: document.getElementById("password_signup").value,
+            password2: document.getElementById("password_signup2").value,
+        }
+        if(data.password.length < 8){
+            var div = document.getElementById('signup-error');
+            div.innerHTML = 'Password too short';
+            return;
+        }
+        if(data.password != data.password2){
+            var div = document.getElementById('signup-error');
+            div.innerHTML = 'Passwords do not match';
+            return;
+        }
+
+        
+        
+        fetch("/api/signup", {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(data)
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+
+            // console.log(data.msg);
+            // if (data.loggedIn == true){
+            //     window.location.href = "/"
+            // } else {
+            //     console.log("login failed");
+            //     var div = document.getElementById('login-error');
+            //     div.innerHTML = 'Wrong username/password';
+            // }
+
+        }).catch(error => {
+            console.log(error);
+        });
+
+
+    }
+
+
+
+
+
+</script>
