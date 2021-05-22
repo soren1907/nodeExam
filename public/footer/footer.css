@@ -1,0 +1,11 @@
+
+
+body {
+    background-color: rgb(238, 226, 214);
+    background-image: url("https://www.dacapopianolessons.com/wp-content/uploads/2019/03/circle-background-pattern.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 70px;
+}

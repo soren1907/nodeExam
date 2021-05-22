@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/soren1907/nodeExam#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "mongodb": "^3.6.6"
   }
 }

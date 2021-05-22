@@ -3,17 +3,13 @@ const app = express();
 const fs = require("fs");
 const session = require("express-session");
 const loginRouter = require("./routes/login.js");
-
-
+require("dotenv").config();
 
 //middleware
 app.use(express.static("public"));
 app.use(express.json());
-app.use(session({secret: "1234", resave: false, saveUninitialized: true}));
+app.use(session({secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true}));
 app.use(loginRouter.router); 
-
-
-
 
 //html for footer & header
 const footer = fs.readFileSync(__dirname + "/public/footer/footer.html", "utf-8");
@@ -26,6 +22,7 @@ const login_signup = fs.readFileSync(__dirname + "/public/login_signup/login_sig
 
 app.get("/", (req,res) => {
     res.send(header + frontpage + footer);
+    console.log()
 });
 
 app.get("/forum", (req,res) => {
