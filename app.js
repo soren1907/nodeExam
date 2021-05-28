@@ -2,14 +2,24 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 const session = require("express-session");
-const loginRouter = require("./routes/login.js");
+const loginSignupRouter = require("./router/login_signup_router.js");
+const userRouter = require("./router/user_router.js");
 require("dotenv").config();
 
 //middleware
 app.use(express.static("public"));
 app.use(express.json());
 app.use(session({secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true}));
-app.use(loginRouter.router); 
+app.use(loginSignupRouter.router); 
+app.use(userRouter.router); 
+const isLoggedIn = (req,res,next) =>{
+    //middleware used to check if user is signed in before going to specific endpoint
+    if(!req.session.user) {
+        return res.status(401).send(header + no_access + footer);
+    } else {
+        next();
+    }
+}
 
 //html for footer & header
 const footer = fs.readFileSync(__dirname + "/public/footer/footer.html", "utf-8");
@@ -19,22 +29,37 @@ const header = fs.readFileSync(__dirname + "/public/header/header.html", "utf-8"
 const frontpage = fs.readFileSync(__dirname + "/public/frontpage/frontpage.html", "utf-8");
 const forum = fs.readFileSync(__dirname + "/public/forum/forum.html", "utf-8");
 const login_signup = fs.readFileSync(__dirname + "/public/login_signup/login_signup.html", "utf-8");
+const profile = fs.readFileSync(__dirname + "/public/user/user_profile.html", "utf-8");
+const no_access = fs.readFileSync(__dirname + "/public/info/no_access.html", "utf-8");
 
+//Endpoints
 app.get("/", (req,res) => {
     res.send(header + frontpage + footer);
     console.log()
 });
 
-app.get("/forum", (req,res) => {
-    console.log(req.session.user);
-    if(!req.session.user) {
-        return res.status(401).send({access: "denied"});
-    }
-    return res.status(200).send(header + forum + footer);
+app.get("/forum", isLoggedIn, (req,res) => {
+    // console.log(req.session.user);
+    // if(!req.session.user) {
+    //     return res.status(401).send({access: "denied"});
+    // }
+    res.status(200).send(header + forum + footer);
 })
 
 app.get("/login", (req,res) => {
     res.send(header + login_signup + footer);
+})
+
+// app.get("/profile", isLoggedIn, (req,res) => {
+//     res.send(header + profile + footer);
+// })
+
+app.get("/profile", (req,res) => {
+    res.send(header + profile + footer);
+})
+
+app.get("/*", (req,res) => {
+    res.status(404).send(header + "<h2>Page not found</h2>" + footer);
 })
 
 app.listen(8080, (error) => {

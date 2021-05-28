@@ -1,0 +1,57 @@
+<div class="container" id="user-profile">
+    <div class="row" style="text-align: center;">
+        <div class="col-12">
+            <h4 id=username></h4><br>
+            <p id="user-profile-message"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6" align="center">
+            <h5>Update Password</h5>
+            <div class="input-group mb-3 w-75">
+                <input type="password" id="old_password" name="old_password" class="form-control" placeholder="Old password" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3 w-75">
+                <input type="password" id="new_password" name="new_password" class="form-control" placeholder="New password" aria-describedby="inputGroup-sizing-default">
+            </div>   
+            <div class="d-grid gap-2 w-75">
+                <button class="btn btn-primary mb-3" type="submit" onclick="updatePassword()">Change password</button>
+            </div>  
+        </div>
+
+        <div class="col-6">
+            <h5> Delete profile
+                <span class="pull-right">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                    <div class="modal" id="deleteModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Delete profile?</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Type your password to delete profile</p>
+                                <input type="password" id="confirm-delete" name="confirm-delete" class="form-control" placeholder="password"
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-danger" onclick="deleteAccount()">Delete</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </span>
+            </h5>
+            <br>
+            <h5> Sign out
+                <span class="pull-right">
+                    <button type="button" class="btn btn-primary" onclick="signout()">Sign out</button>
+                </span>
+            </h5>
+        </div>
+    </div>      
+</div>
+
+<link rel="stylesheet" href="/user/user_profile.css">
+<script src="/user/user_profile.js"></script>
