@@ -16,4 +16,4 @@ function connectLocal(callback) {
 module.exports = {
     connectHosted, 
     connectLocal
-};
+}; 

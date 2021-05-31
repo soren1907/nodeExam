@@ -1,0 +1,45 @@
+
+<div class="container" id="joke-container">
+    <div class="row justify-content-center">
+        <div class="col-md-2 col-sm-12 col-style" >
+            <h5 class="heading"> Category</h5>
+                <ul id=category-list>
+                    <li>
+                        <button class="btn" onclick="getJokes('Programming')">Programming</button>
+                    </li>
+                    <li>
+                        <button class="btn" onclick="getJokes('Miscellaneous')">Misc</button>
+                    </li>
+                    <li>
+                        <button class="btn" onclick="getJokes('Dark')">Dark Humor</button>
+                    </li>
+                    <li>
+                        <button class="btn" onclick="getJokes('Pun')">Pun</button>
+                        
+                    </li>
+                    <li>
+                        <button class="btn" onclick="getJokes('Spooky')">Spooky</button>
+                    </li>
+                    <li>
+                        <button class="btn" onclick="getJokes('Christmas')">Christmas</button>
+                        
+                    </li>
+                </ul>
+        </div>
+        <div class="col-md-9 col-sm-12 col-style">
+            <h5 class="heading" id="category-name"> Category</h5>
+            <div id="joke1" style="border-bottom: 1px solid black; padding: 20px 0px;"></div>
+            <div id="joke2" style="border-bottom: 1px solid black; padding: 20px 0px;"></div>
+            <div id="joke3" style="padding: 20px 0px;"></div>
+            <div style="padding: 10px 0px; text-align:center;">
+                <button class="btn btn-secondary" id="new-joke" name="new-joke" onclick="moreJokes()">More Jokes</button>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+<script src="/joke_category/joke_category.js"></script>
+<link rel="stylesheet" href="/joke_category/joke_category.css">

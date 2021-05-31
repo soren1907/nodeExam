@@ -22,8 +22,9 @@ function deleteAccount(){
         if (data.deleteSuccess == true){
             window.location.href = "/"
         } else {
-            message.style.color= "red"
-            message.innerText = 'Wrong username/password';
+            const deleteMessage = document.getElementById("delete-message");
+            deleteMessage.style.color= "red"
+            deleteMessage.innerText = 'Wrong username/password';
         }
     }).catch(error => {
         console.log(error);

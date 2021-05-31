@@ -31,6 +31,9 @@ const forum = fs.readFileSync(__dirname + "/public/forum/forum.html", "utf-8");
 const login_signup = fs.readFileSync(__dirname + "/public/login_signup/login_signup.html", "utf-8");
 const profile = fs.readFileSync(__dirname + "/public/user/user_profile.html", "utf-8");
 const no_access = fs.readFileSync(__dirname + "/public/info/no_access.html", "utf-8");
+const randomJoke = fs.readFileSync(__dirname + "/public/random_joke/random_joke.html", "utf-8");
+const jokeCategory = fs.readFileSync(__dirname + "/public/joke_category/joke_category.html", "utf-8");
+const communityJokes = fs.readFileSync(__dirname + "/public/community_jokes/community_jokes.html", "utf-8");
 
 //Endpoints
 app.get("/", (req,res) => {
@@ -39,27 +42,31 @@ app.get("/", (req,res) => {
 });
 
 app.get("/forum", isLoggedIn, (req,res) => {
-    // console.log(req.session.user);
-    // if(!req.session.user) {
-    //     return res.status(401).send({access: "denied"});
-    // }
     res.status(200).send(header + forum + footer);
-})
+});
+
+app.get("/random_joke", (req,res) => {
+    res.status(200).send(header + randomJoke + footer);
+});
+
+app.get("/joke_categories", (req,res) => {
+    res.status(200).send(header + jokeCategory + footer);
+});
+
+app.get("/community_jokes", isLoggedIn, (req,res) => {
+    res.status(200).send(header + communityJokes + footer);
+});
 
 app.get("/login", (req,res) => {
     res.send(header + login_signup + footer);
 })
 
-// app.get("/profile", isLoggedIn, (req,res) => {
-//     res.send(header + profile + footer);
-// })
-
-app.get("/profile", (req,res) => {
+app.get("/profile", isLoggedIn, (req,res) => {
     res.send(header + profile + footer);
 })
 
 app.get("/*", (req,res) => {
-    res.status(404).send(header + "<h2>Page not found</h2>" + footer);
+    res.status(404).send(header + "<h2>404: Page not found</h2>" + footer);
 })
 
 app.listen(8080, (error) => {

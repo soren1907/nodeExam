@@ -12,9 +12,9 @@ function sendLoginData(){
         },
         method: "POST",
         body: JSON.stringify(data)
-    }).then(res => {
-        return res.json();
-    }).then(data => {
+    })
+    .then(response => response.json()) 
+    .then(data => {
         if (data.loginSuccess == true){
             window.location.href = "/"
         } else {
