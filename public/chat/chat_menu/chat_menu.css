@@ -1,0 +1,27 @@
+#menu-container {
+    width: 50%;
+    padding-top: 100px;
+    
+}
+
+#room-button {
+    display: block;
+    margin: 20px 0px;
+    width: 50%;
+    
+}
+
+#menu-body {
+    background-color: rgb(237, 243, 238); 
+    height: 300px; 
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#menu-header {
+    background-color:rgb(78, 76, 76);
+    color:rgb(108, 195, 108); 
+    text-align: center; 
+    padding: 10px 0px
+}

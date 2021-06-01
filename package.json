@@ -1,18 +1,18 @@
 {
   "name": "nodeExam",
   "version": "1.0.0",
-  "description": "Exam project for the node.js B class Made by Søren Raben",
+  "description": "Exam project for the node.js B-class Made by Søren Raben",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  }, 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/soren1907/nodeExam.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Søren Raben",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/soren1907/nodeExam/issues"
   },
@@ -23,6 +23,6 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mongodb": "^3.6.6",
-    "node-fetch": "^2.6.1"
+    "socket.io": "^4.1.2"
   }
 }
