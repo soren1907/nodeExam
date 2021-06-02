@@ -2,13 +2,8 @@
     margin-top: 50px;
     width: 75%; 
     font-size: 20px;
-    
     padding: 10px 10px; 
     background-color: rgb(239, 241, 241);
     border: 1px solid black;
     box-shadow: 10px 10px 5px grey;
 }
-
-/* #user-profile a{
-    text-decoration: none;
-} */

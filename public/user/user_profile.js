@@ -9,10 +9,10 @@ fetch("/api/get_username").then(res => {
 const message = document.getElementById('user-profile-message');
 
 function deleteAccount(){
-    const password = document.getElementById("confirm-delete").value
+    const password = document.getElementById("confirm-delete").value;
     fetch("/api/delete_account", {
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=UTF-8",
         },
         method: "DELETE",
         body: JSON.stringify({password})
@@ -20,10 +20,10 @@ function deleteAccount(){
         return res.json();
     }).then(data => {
         if (data.deleteSuccess == true){
-            window.location.href = "/"
+            window.location.href = "/";
         } else {
             const deleteMessage = document.getElementById("delete-message");
-            deleteMessage.style.color= "red"
+            deleteMessage.style.color= "red";
             deleteMessage.innerText = 'Wrong username/password';
         }
     }).catch(error => {
@@ -33,15 +33,15 @@ function deleteAccount(){
 
 function signout(){
     fetch("/api/logout").then(res => {
-        window.location.href = "/"
+        window.location.href = "/";
     });
 }
 
 function updatePassword(){
     const data = {
-        oldPassword : document.getElementById("old_password").value,
-        newPassword : document.getElementById("new_password").value
-    }
+        oldPassword : document.getElementById("old-password").value,
+        newPassword : document.getElementById("new-password").value
+    };
     if(data.newPassword.length < 8){
         message.style.color= "red"
         message.innerText = 'New password too short';
@@ -49,20 +49,19 @@ function updatePassword(){
     }
     fetch("/api/update_password", {
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=UTF-8",
         },
         method: "PATCH",
         body: JSON.stringify(data)
     }).then(res => {
         return res.json();
     }).then(data => {
-        console.log("data: " + data)
         if (data.updateSuccess){
-            message.style.color = "green"
-            message.innerText = "Password updated"
+            message.style.color = "green";
+            message.innerText = "Password updated";
         } else {
-            message.style.color = "red"
-            message.innerText = "Password not updated"
+            message.style.color = "red";
+            message.innerText = "Password not updated";
         }
     }).catch(error => {
         console.log(error);

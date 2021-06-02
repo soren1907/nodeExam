@@ -1,0 +1,47 @@
+<div class="container" id="login-register-box">
+
+    <div class="row">
+        <div class="col-12" style="text-align: center;">
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6" align="center">
+            <h2>Login</h2>
+            <br> 
+            <div id="login-message" style="color: darkred;"></div>
+            <div class="input-group mb-3 w-75">
+                <input type="text" id="username-login" name="username-login" class="form-control" placeholder="Username">
+            </div>
+            <div class="input-group mb-3 w-75">
+                <input type="password" id="password-login" name="password-login" class="form-control" placeholder="Password">
+            </div>   
+            <div class="d-grid gap-2 w-75">
+                <button class="btn btn-primary mb-3" type="submit" onclick="sendLoginData()">Login</button>
+            </div>  
+        </div>
+
+        <div class="col-sm-12 col-md-6" align="center">
+            <h2>Sign up</h2>
+            <br> 
+            <div id="register-message"></div>
+            
+            <div class="input-group mb-3 w-75">
+                <input type="text" id="username-register" name="username-register" class="form-control" placeholder="Username">
+            </div>
+            <div class="input-group mb-3 w-75">
+                <input type="password" id="password-register" name="password-register" class="form-control" placeholder="Password (min 8 char)">
+            </div>
+            <div class="input-group mb-3 w-75">
+                <input type="password" id="password-register2" name="password-register2" class="form-control" placeholder="Type password again">
+            </div> 
+            <div class="d-grid gap-2 w-75">
+                <button class="btn btn-primary" type="submit" onclick="sendRegisterData()">Sign up</button>
+            </div> 
+        </div>
+    </div>
+</div>
+ 
+<link href="/login_register/login_register.css" rel="stylesheet">
+<script src="/login_register/login_register.js"></script>

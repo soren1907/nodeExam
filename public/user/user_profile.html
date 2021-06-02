@@ -9,13 +9,13 @@
         <div class="col-6" align="center">
             <h5>Update Password</h5>
             <div class="input-group mb-3 w-75">
-                <input type="password" id="old_password" name="old_password" class="form-control" placeholder="Old password" aria-describedby="inputGroup-sizing-default">
+                <input type="password" id="old-password" name="old-password" class="form-control" placeholder="Old password">
             </div>
             <div class="input-group mb-3 w-75">
-                <input type="password" id="new_password" name="new_password" class="form-control" placeholder="New password" aria-describedby="inputGroup-sizing-default">
+                <input type="password" id="new-password" name="new-password" class="form-control" placeholder="New password">
             </div>   
             <div class="d-grid gap-2 w-75">
-                <button class="btn btn-primary mb-3" type="submit" onclick="updatePassword()">Change password</button>
+                <button class="btn btn-primary mb-3" type="button" onclick="updatePassword()">Change password</button>
             </div>  
         </div>
 
@@ -28,7 +28,7 @@
                           <div class="modal-content">
                             <div class="modal-header">
                               <h5 class="modal-title">Delete profile?</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
                                 <div id="delete-message"></div>

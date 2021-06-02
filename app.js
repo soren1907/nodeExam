@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 const session = require("express-session");
-const loginSignupRouter = require("./router/login_signup_router.js");
+const loginRegisterRouter = require("./router/login_register_router.js");
 const userRouter = require("./router/user_router.js");
 require("dotenv").config();
 const server = require("http").createServer(app);
@@ -12,7 +12,7 @@ const io = require("socket.io")(server);
 app.use(express.static("public"));
 app.use(express.json());
 app.use(session({secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true}));
-app.use(loginSignupRouter.router); 
+app.use(loginRegisterRouter.router); 
 app.use(userRouter.router);
 const requireSession = (req, res, next) => {
     //middleware used to check if user is signed in before going to specific endpoint
@@ -21,7 +21,7 @@ const requireSession = (req, res, next) => {
     } else {
         next();
     }
-}
+};
 
 // get html for footer & header
 const footer = fs.readFileSync(__dirname + "/public/footer/footer.html", "utf-8");
@@ -30,7 +30,7 @@ const header = fs.readFileSync(__dirname + "/public/header/header.html", "utf-8"
 // html for other endpoints
 const frontpage = fs.readFileSync(__dirname + "/public/frontpage/frontpage.html", "utf-8");
 const forum = fs.readFileSync(__dirname + "/public/forum/forum.html", "utf-8");
-const loginSignup = fs.readFileSync(__dirname + "/public/login_signup/login_signup.html", "utf-8");
+const loginRegister = fs.readFileSync(__dirname + "/public/login_register/login_register.html", "utf-8");
 const profile = fs.readFileSync(__dirname + "/public/user/user_profile.html", "utf-8");
 const noAccess = fs.readFileSync(__dirname + "/public/info/no_access.html", "utf-8");
 const randomJoke = fs.readFileSync(__dirname + "/public/random_joke/random_joke.html", "utf-8");
@@ -55,8 +55,8 @@ app.get("/joke_categories", (req,res) => {
     res.send(header + jokeCategory + footer);
 });
 
-app.get("/login", (req,res) => {
-    res.send(header + loginSignup + footer);
+app.get("/login_register", (req,res) => {
+    res.send(header + loginRegister + footer);
 });
 
 app.get("/profile", requireSession, (req,res) => {

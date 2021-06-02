@@ -1,0 +1,9 @@
+#nav-menu a{
+    color: rgb(242, 245, 246);
+}
+#nav-menu a:hover {
+    color: rgb(72, 197, 67);
+}
+#login-btn:hover {
+    background-color: rgb(164, 165, 170);
+}

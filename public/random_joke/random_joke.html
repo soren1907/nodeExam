@@ -1,13 +1,13 @@
 
 <div class="container" id="joke-container">
 
-    <div class="row" style="border-bottom: solid 1px rgb(140, 140, 140); padding: 10px 10px; text-align: center; margin: 10px 10px;" >
+    <div class="row" id="joke-header">
         <div class="col-12">
             <h3>Random Joke</h3>
         </div>
     </div>
 
-    <div class="row" style="margin: 10px 10px; padding: 20px 0px;">
+    <div class="row" id="joke-body">
         <div class="col-12">
            <div id="the-joke"></div>
            <div id="setup"></div>
@@ -15,20 +15,12 @@
         </div>
     </div>
 
-    <div class="row" style="border-top: solid 1px rgb(140, 140, 140); padding-top: 20px; margin: 10px 10px;" align="center">
+    <div class="row" id="joke-footer" align="center">
         <div class="col-12">
-           <button class="btn btn-secondary" id="new-joke" name="new-joke" onclick="newJoke()">New Joke</button>
+           <button type="button" class="btn btn-secondary" id="new-joke" name="new-joke" onclick="newJoke()">New Joke</button>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
 
 <link rel="stylesheet" href="/random_joke/random_joke.css">
 <script src="/random_joke/random_joke.js"></script>

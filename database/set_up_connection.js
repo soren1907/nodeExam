@@ -1,6 +1,6 @@
 const mongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
-const hostedDBPath = process.env.DB_PATH    //production
+const hostedDBPath = process.env.DB_PATH;    //production
 const localDBPath = "mongodb://localhost:27017";    //development
 
 function connectHosted(callback) {

@@ -7,22 +7,20 @@ fetch("/api/get_session").then(res => {
         document.getElementById("login-btn").innerText = "Sign out";
         document.getElementById("login-btn").onclick=function(){
             fetch("/api/logout").then(res => {
-                console.log(res);
-                window.location.href = "/"
+                window.location.href = "/";
             });
         }
         const userIcon = document.createElement("img");
-        userIcon.src = "/resources/user.png"
+        userIcon.src = "/resources/user.png";
         userIcon.style.width = "32px";
         userIcon.style.height = "32px";
         userIcon.onclick=function(){window.location.href = "/profile"};
-        const link = document.getElementById("user-profile-icon")
-        link.appendChild(userIcon)
+        const link = document.getElementById("user-profile-icon");
+        link.appendChild(userIcon);
 
     } else { //False: no session (not logged in) 
-        document.getElementById("login-btn").onclick=function(){window.location.href = "/login"};
+        document.getElementById("login-btn").onclick=function(){window.location.href = "/login_register"};
     }
-
 }).catch(error => {
     console.log("error: " + error);
 }); 
