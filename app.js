@@ -4,6 +4,7 @@ const fs = require("fs");
 const session = require("express-session");
 const loginRegisterRouter = require("./router/login_register_router.js");
 const userRouter = require("./router/user_router.js");
+const forumRouter = require("./router/forum_router.js");
 require("dotenv").config();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server); 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(session({secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true}));
 app.use(loginRegisterRouter.router); 
 app.use(userRouter.router);
+app.use(forumRouter.router);
 const requireSession = (req, res, next) => {
     //middleware used to check if user is signed in before going to specific endpoint
     if(!req.session.user) {

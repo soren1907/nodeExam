@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
-const {connectHosted, connectLocal} = require("../database/set_up_connection.js");
+const {connectHosted, connectLocal} = require("../database/connection.js");
 
 router.post("/api/login", (req, res) => {
     const fetchedUsername = req.body.username.toString();
