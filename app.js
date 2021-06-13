@@ -117,9 +117,9 @@ io.on("connection", (socket) => {
     });
 });
  
-// Starts server
-const port = process.env.PORT || 8080;
 
+const port = process.env.PORT || 8080;
+// Starts server
 server.listen(port, (error) => {
     if(error) {
         console.log(error);

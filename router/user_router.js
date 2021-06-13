@@ -3,7 +3,10 @@ const bcrypt = require("bcrypt");
 const {connectHosted, connectLocal} = require("../database/connection.js");
 
 router.get("/api/get_session", (req,res) => {
-    if(req.session.user){
+    if(req.session.newSession == null) {
+        req.session.newSession = false
+        res.send({newSession: true})
+    } else if(req.session.user) {
         res.send({session: true});
     } else {
         res.send({session: false});
@@ -82,5 +85,3 @@ router.patch("/api/update_password", (req, res) => {
 module.exports = {
     router
 };
-
-

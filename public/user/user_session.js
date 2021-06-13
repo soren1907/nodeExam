@@ -2,8 +2,13 @@
 fetch("/api/get_session").then(res => {
     return res.json();
 }).then(data => {
+
+    if(data.newSession) {
+        const myModal = new bootstrap.Modal(document.getElementById('cookieModal'))
+        myModal.show()
+    }
     if(data.session){ //true: session "user" found (logged in)
-        
+
         document.getElementById("login-btn").innerText = "Sign out";
         document.getElementById("login-btn").onclick=function(){
             fetch("/api/logout").then(res => {
@@ -21,6 +26,7 @@ fetch("/api/get_session").then(res => {
     } else { //False: no session (not logged in) 
         document.getElementById("login-btn").onclick=function(){window.location.href = "/login_register"};
     }
+
 }).catch(error => {
     console.log("error: " + error);
 }); 

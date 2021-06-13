@@ -1,0 +1,1 @@
+document.getElementById("copyright").innerText = "Copyright © " + new Date().getFullYear(); 
